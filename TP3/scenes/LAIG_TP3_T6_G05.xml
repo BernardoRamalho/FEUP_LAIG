@@ -1,0 +1,2473 @@
+<lsf>
+
+    <initials>
+        <reference length="2" />
+        <!-- axis length; "0" means no axis displayed -->
+        <scenes scenesID="livingRoom,forest" />
+        <!-- identifier of root node of the scene graph; this node -->
+        <!-- must be defined in one of the following NODE declarations -->
+    </initials>
+    <views default="perspective">
+        <!-- at least one of the following type of cameras must be declared -->
+        <perspective id="perspective" near="0.1" far="500" angle="45">
+            <from x="0" y="30" z="30" />
+            <to x="0" y="8" z="0" />
+        </perspective>
+    </views>
+
+    <illumination>
+        <ambient r="0" g="0" b="0" a="1.0" />           <!-- global ambient -->
+        <background r="0" g="0" b="0" a="1.0" />        <!-- background color -->
+    </illumination>
+
+
+    <lights>
+        <!-- NOTE: this block "light" must be repeated as necessary with different "id". At least one light should be present, and a maximum of eight lights is accepted. -->
+        <light id="fire">            <!-- light identifier -->
+            <enable value="0" />
+            <!-- enable/disable -->
+            <position x="42.4" y="6.5" z="0" w="0" /><!-- light position; w=1: point light; w=0: directional light -->
+            <ambient r="1.0" g="0.4" b="0.2" a="1" />                   <!-- ambient component -->
+            <diffuse r="1.0" g="0.4" b="0.2" a="1" />             <!-- diffuse component -->
+            <specular r="1.0" g="0.4" b="0.2" a="1" />            <!-- specular component -->
+        </light>
+
+        <light id="farDoor">            <!-- light identifier -->
+            <enable value="0" />
+            <!-- enable/disable -->
+            <position x="0" y="40" z="-51" w="0" /><!-- light position; w=1: point light; w=0: directional light -->
+            <ambient r="0.92" g="0.98" b="0.98" a="1" />                   <!-- ambient component -->
+            <diffuse r="0.92" g="0.98" b="0.98" a="1" />              <!-- diffuse component -->
+            <specular r="0.92" g="0.98" b="0.98" a="1" />            <!-- specular component -->
+        </light>
+
+        <light id="nearDoor">            <!-- light identifier -->
+            <enable value="0" />
+            <!-- enable/disable -->
+            <position x="0" y="40" z="51" w="0" /><!-- light position; w=1: point light; w=0: directional light -->
+            <ambient r="0.92" g="0.98" b="0.98" a="1" />                   <!-- ambient component -->
+            <diffuse r="0.92" g="0.98" b="0.98" a="1" />             <!-- diffuse component -->
+            <specular r="0.92" g="0.98" b="0.98" a="1" />            <!-- specular component -->
+        </light>
+
+        <light id="sun">            <!-- light identifier -->
+            <enable value="1" />
+            <!-- enable/disable -->
+            <position x="0" y="100" z="0" w="0" /><!-- light position; w=1: point light; w=0: directional light -->
+            <ambient r="0.92" g="0.98" b="0.98" a="1" />                   <!-- ambient component -->
+            <diffuse r="0.92" g="0.98" b="0.98" a="1" />             <!-- diffuse component -->
+            <specular r="0.92" g="0.98" b="0.98" a="1" />            <!-- specular component -->
+        </light>
+
+    </lights>
+
+
+    <textures>
+        <!-- NOTE: this block "TEXTURE" must be repeated as necessary with different "id" -->
+        <texture id="board" path="./scenes/images/board.jpg" />
+        <texture id="blackMetal" path="./scenes/images/blackMetal.jpg" />
+        <texture id="brick" path="./scenes/images/brick.jpg" />
+        <texture id="firePlace" path="./scenes/images/firePlace.jpg" />
+        <texture id="chairLeather" path="./scenes/images/chairLeather.jpg" />
+        <texture id="oakWood" path="./scenes/images/oakWood.jpg" />
+        <texture id="tatami" path="./scenes/images/tatami.jpg" />
+        <texture id="slidingDoors" path="./scenes/images/slidingDoors2.jpg" />
+        <texture id="closedDoors" path="./scenes/images/closedDoors.jpg" />
+        <texture id="wallPaint" path="./scenes/images/wallPaint.jpg" />
+        <texture id="japaneseCeiling" path="./scenes/images/japaneseCeiling.jpg" />
+        <texture id="birdPainting" path="./scenes/images/birdPainting.jpg" />
+        <texture id="wavePainting" path="./scenes/images/wavePainting.jpg" />
+        <texture id="forestFloor" path="./scenes/images/forestFloor.jpg" />
+        <texture id="forestWall" path="./scenes/images/forest.jpg" />
+        <texture id="forestSky" path="./scenes/images/forestSky.jpg" />
+        <texture id="treeTrunk" path="./scenes/images/treeTrunk.jpg" />
+        <texture id="treeLeafs" path="./scenes/images/treeLeafs.jpg" />
+
+
+    </textures>
+
+    <spritesheets>
+        <spritesheet id="moon" path="./scenes/images/moon.jpg" sizeM="3" sizeN="3" />
+    </spritesheets>
+
+
+    <materials>
+        <!-- NOTE: the "MATERIAL" block may be repeated as required. Each defined material
+             requires a distinct "id". At least one material should be present. -->
+        <material id="white">
+            <shininess value="0.8" />
+            <specular r="0" g="0" b="0" a="1.0" />        <!-- specular reflection -->
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />         <!-- diffuse reflection -->
+            <ambient r="1.0" g="1.0" b="1.0" a="1.0" />         <!-- ambient reflection -->
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />        <!-- emissive component -->
+        </material>
+
+        <material id="rose">
+            <shininess value="0.8" />
+            <specular r="0" g="0" b="0" a="1.0" />        <!-- specular reflection -->
+            <diffuse r="0.95" g="0.41" b="0.78" a="1.0" />         <!-- diffuse reflection -->
+            <ambient r="0.95" g="0.41" b="0.78" a="1.0" />            <!-- ambient reflection -->
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />        <!-- emissive component -->
+        </material>
+
+        <material id="darkBrown">
+            <shininess value="0.8" />
+            <specular r="0" g="0" b="0" a="1.0" />        <!-- specular reflection -->
+            <diffuse r="0.08" g="0.07" b="0.075" a="1.0" />         <!-- diffuse reflection -->
+            <ambient r="0.16" g="0.14" b="0.15" a="1.0" />         <!-- ambient reflection -->
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />        <!-- emissive component -->
+        </material>
+
+        <material id="black">
+            <shininess value="0.8" />
+            <specular r="0" g="0" b="0" a="1.0" />        <!-- specular reflection -->
+            <diffuse r="0.10" g="0.10" b="0.10" a="1.0" />         <!-- diffuse reflection -->
+            <ambient r="0.10" g="0.10" b="0.10" a="1.0" />         <!-- ambient reflection -->
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />        <!-- emissive component -->
+        </material>
+
+        <material id="blue">
+            <shininess value="0.8" />
+            <specular r="0" g="0" b="0" a="1.0" />        <!-- specular reflection -->
+            <diffuse r="0.22" g="0.38" b="0.78" a="1.0" />         <!-- diffuse reflection -->
+            <ambient r="0.22" g="0.38" b="0.78" a="1.0" />         <!-- ambient reflection -->
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />        <!-- emissive component -->
+        </material>
+
+        <material id="dullGreen">
+            <shininess value="0.8" />
+            <specular r="0" g="0" b="0" a="1.0" />        <!-- specular reflection -->
+            <diffuse r="0.5" g="0.70" b="0.49" a="1.0" />         <!-- diffuse reflection -->
+            <ambient r="0.5" g="0.70" b="0.49" a="1.0" />         <!-- ambient reflection -->
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />        <!-- emissive component -->
+        </material>
+
+        <material id="lightYellow">
+            <shininess value="0.8" />
+            <specular r="0" g="0" b="0" a="1.0" />        <!-- specular reflection -->
+            <diffuse r="0" g="0" b="0" a="0.1" />         <!-- diffuse reflection -->
+            <ambient r="0.415" g="0.385" b="0.3" a="1.0" />         <!-- ambient reflection -->
+            <emissive r="0.0" g="0.0" b="0.0" a="0.1" />        <!-- emissive component -->
+        </material>
+        
+    </materials>
+
+    <animations>
+
+    </animations>
+
+    <nodes>
+
+        <node id = "livingRoom">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="walls" />
+                <noderef id="fireplace" />
+                <noderef id="rightPainting"/>
+                <noderef id="leftPainting" />
+                <noderef id="board"/>
+                <noderef id="ikeaTable"/>
+                <noderef id="nearPillow"/>
+                <noderef id="farPillow"/>
+            </descendants>
+
+        </node>
+
+        <node id = "walls">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="11" z="0" />
+                <scale sx="1" sy="0.6" sz="1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+                 <!-- TODO Get new ceiling texture (current one has watermark)-->
+            <descendants>
+                <leaf type="cubeMap" frontTextureID = "slidingDoors" backTextureID="slidingDoors" leftTextureID="closedDoors" rightTextureID="wallPaint" bottomTextureID="tatami" topTextureID="japaneseCeiling" scale="100" />
+            </descendants>
+
+        </node>
+
+
+        <node id = "fireplace">
+            <!-- next two lines are mandatory -->
+            <material id="dullGreen" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="chimney"/>
+                <noderef id="fire"/>
+                <noderef id="fireplaceBox"/>
+            </descendants>
+
+        </node>
+
+        <node id = "fireplaceBox">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="blackMetal">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="25" aft="25" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="46.5" y="6.5" z="0" />
+                <scale sx="0.75" sy="1.5" sz="1.75" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="10"/>
+            </descendants>
+
+        </node>
+
+        <node id = "chimney">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="blackMetal">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="47" y="60" z="0" />
+                <rotation axis="xx" angle="90" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cylinder" height="50" topRadius="3" bottomRadius="3" stacks="15" slices="15"/>
+            </descendants>
+
+        </node>
+
+        <node id = "fire">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="firePlace">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="25" aft="25" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="42.49" y="6.5" z="0" />
+                <rotation axis="yy" angle="-90"/>
+                <rotation axis="xx" angle="90"/>
+                <scale sx="13" sy="1" sz="10" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+            </descendants>
+
+        </node>
+
+        <node id = "rightPainting">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="birdPainting">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="49,9" y="35" z="25" />
+                <rotation axis="yy" angle="-90"/>
+                <rotation axis="xx" angle="90"/>
+                <scale sx="11.5" sy="1" sz="25" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+            </descendants>
+
+        </node>
+
+        <node id = "leftPainting">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="wavePainting">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="49,9" y="35" z="-25" />
+                <rotation axis="yy" angle="-90"/>
+                <rotation axis="xx" angle="90"/>
+                <scale sx="32" sy="1" sz="18" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+            </descendants>
+
+        </node>
+        
+        <node id = "board">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="board">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <scale sx="16" sy="1" sz="16"/>
+                <translation x="0" y="8.2" z="0"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+            </descendants>
+
+        </node>
+
+         <node id = "ikeaTable">
+            <!-- next two lines are mandatory -->
+            <material id="darkBrown" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="8.09" z="0"/>
+                <scale sx="20" sy="20" sz="20"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableCover"/>
+                <noderef id="ikeaTableLegs"/>
+                <noderef id="rightPieceHolder"/>
+                <noderef id="leftPieceHolder"/>
+                <noderef id="options"/>
+            </descendants>
+
+        </node>
+
+        <node id = "options">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="0.1" z="0" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="undo"/>
+                <noderef id="changeScene"/>
+                <noderef id="pass"/>
+                <noderef id="play"/>
+            </descendants>
+
+        </node>
+
+        <node id = "undo">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.5" y="0" z="0" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="undoPlate"/>
+                <noderef id="undoText"/>
+            </descendants>
+
+        </node>
+
+        <node id = "undoPlate">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.07" z="0.25"/>
+                <rotation axis="z" angle="35"/>
+                <scale sx="0.1" sy="0.8" sz="2.5" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.1"/>  
+
+            </descendants>
+
+        </node>
+
+        
+        <node id = "undoText">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.01" y="-0.06" z="0.325"/>
+                <rotation axis="z" angle="35"/>
+                <rotation axis="y" angle="90"/>
+                <scale sx="0.05" sy="0.1" sz="0.01" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type = 'spritetext' text='UNDO' />
+
+            </descendants>
+
+        </node>
+
+        <node id = "changeScene">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.5" y="0" z="0" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="changeScenePlate"/>
+                <noderef id="changeSceneText"/>
+            </descendants>
+
+        </node>
+
+        <node id = "changeScenePlate">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.07" z="-0.25"/>
+                <rotation axis="z" angle="35"/>
+                <scale sx="0.1" sy="0.8" sz="2.5" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.1"/>  
+
+            </descendants>
+
+        </node>
+
+        
+        <node id = "changeSceneText">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.01" y="-0.06" z="-0.15"/>
+                <rotation axis="z" angle="35"/>
+                <rotation axis="y" angle="90"/>
+                <scale sx="0.05" sy="0.1" sz="0.01" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type = 'spritetext' text='SCENE' />
+
+            </descendants>
+
+        </node>
+
+         <node id = "pass">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.5" y="0" z="0" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="passPlate"/>
+                <noderef id="passText"/>
+            </descendants>
+
+        </node>
+
+        <node id = "passPlate">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.07" z="0.25"/>
+                <rotation axis="z" angle="-35"/>
+                <scale sx="0.1" sy="0.8" sz="2.5" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.1"/>  
+
+            </descendants>
+
+        </node>
+
+        
+        <node id = "passText">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.01" y="-0.06" z="0.18"/>
+                <rotation axis="z" angle="-35"/>
+                <rotation axis="y" angle="-90"/>
+                <scale sx="0.05" sy="0.1" sz="0.01" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type = 'spritetext' text='PASS' />
+
+            </descendants>
+
+        </node>
+
+        <node id = "play">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.5" y="0" z="0" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="playPlate"/>
+                <noderef id="playText"/>
+            </descendants>
+
+        </node>
+
+        <node id = "playPlate">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.07" z="-0.25"/>
+                <rotation axis="z" angle="-35"/>
+                <scale sx="0.1" sy="0.8" sz="2.5" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.1"/>  
+
+            </descendants>
+
+        </node>
+
+        
+        <node id = "playText">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.01" y="-0.06" z="-0.32"/>
+                <rotation axis="z" angle="-35"/>
+                <rotation axis="y" angle="-90"/>
+                <scale sx="0.05" sy="0.1" sz="0.01" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type = 'spritetext' text='PLAY' />
+
+            </descendants>
+
+        </node>
+
+        <node id = "rightPieceHolder">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.555" y="0" z="0"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="pieceHolder"/>
+            </descendants>
+
+        </node>
+
+        <node id = "leftPieceHolder">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.555" y="0" z="0"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="pieceHolder"/>
+            </descendants>
+
+        </node>
+
+        <node id = "pieceHolder">
+            <!-- next two lines are mandatory -->
+            <material id="lightYellow" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.05" z="0"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="pieceHolderRigtWall"/>
+                <noderef id="pieceHolderLeftWall"/>
+                <noderef id="pieceHolderFarWall"/>
+                <noderef id="pieceHolderNearWall"/>
+                <noderef id="pieceHolderBottomWall"/>
+            </descendants>
+
+        </node>
+
+        <node id = "pieceHolderRigtWall">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.05" y="0" z="0"/>
+                <scale sx="0.1" sy="1" sz="1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.1"/>  
+            </descendants>
+
+        </node>
+
+        <node id = "pieceHolderLeftWall">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.05" y="0" z="0"/>
+                <scale sx="0.1" sy="1" sz="1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.1"/>  
+            </descendants>
+
+        </node>
+
+        <node id = "pieceHolderNearWall">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="0" z="0.045"/>
+                <rotation axis="y" angle="90"/>
+                <scale sx="0.1" sy="1" sz="1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.1"/>  
+            </descendants>
+
+        </node>
+
+        <node id = "pieceHolderFarWall">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="0" z="-0.045"/>
+                <rotation axis="y" angle="90"/>
+                <scale sx="0.1" sy="1" sz="1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.1"/>  
+            </descendants>
+
+        </node>
+
+        <node id = "pieceHolderBottomWall">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.045" z="0"/>
+                <rotation axis="z" angle="90"/>
+                <scale sx="0.1" sy="1" sz="1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.1"/>  
+            </descendants>
+
+        </node>
+        
+
+        <node id = "ikeaTableCover">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableCoverTopSide"/>   
+                <noderef id="ikeaTableCoverBottomSide"/>
+                <noderef id="ikeaTableCoverLeftSide"/>
+                <noderef id="ikeaTableCoverRightSide"/>
+                <noderef id="ikeaTableCoverFarSide"/>
+                <noderef id="ikeaTableCoverNearSide"/>
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableCoverTopSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableCoverBottomSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.1" z="0"/>
+                <rotation axis="xx" angle="180" />
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableCoverFarSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                        id="null" maintains material from parent node -->
+
+
+            <texture id="board">         <!-- declared texture superimposes the texture received from parent node
+                                        id="null" maintains texture from parent node
+                                        id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.05" z="-0.5"/> 
+                <rotation axis="xx" angle="180"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                    descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableCoverSide"/>
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableCoverNearSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                        id="null" maintains material from parent node -->
+
+
+            <texture id="board">         <!-- declared texture superimposes the texture received from parent node
+                                        id="null" maintains texture from parent node
+                                        id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.05" z="0.5"/> 
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                    descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableCoverSide"/>
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableCoverRightSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                        id="null" maintains material from parent node -->
+
+
+            <texture id="board">         <!-- declared texture superimposes the texture received from parent node
+                                        id="null" maintains texture from parent node
+                                        id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.5" y="-0.05" z="0"/>
+                <rotation axis="yy" angle="90"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                    descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableCoverSide"/>
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableCoverLeftSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                        id="null" maintains material from parent node -->
+
+
+            <texture id="board">         <!-- declared texture superimposes the texture received from parent node
+                                        id="null" maintains texture from parent node
+                                        id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.5" y="-0.05" z="0"/>
+                <rotation axis="yy" angle="-90"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                    descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableCoverSide"/>
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableCoverSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <rotation axis="xx" angle="90"/>
+                <scale sx="1" sy="1" sz="0.1"/>
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableLegs">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableLegRightFarSide"/>   
+                <noderef id="ikeaTableLegLeftFarSide"/>   
+                <noderef id="ikeaTableLegRightNearSide"/>   
+                <noderef id="ikeaTableLegLeftNearSide"/>   
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableLegRightNearSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.35" y="0" z="0.35"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableLeg"/>
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableLegRightFarSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.35" y="0" z="-0.35"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableLeg"/>
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableLegLeftNearSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.35" y="0" z="0.35"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableLeg"/>
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableLegLeftFarSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.35" y="0" z="-0.35"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableLeg"/>
+            </descendants>
+
+        </node>
+
+
+
+        <node id = "ikeaTableLeg">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.45" z="0"/>
+                <scale sx="1" sy="0.75" sz="1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="ikeaTableLegRightSide"/>
+                <noderef id="ikeaTableLegLeftSide"/>
+                <noderef id="ikeaTableLegFarSide"/>
+                <noderef id="ikeaTableLegNearSide"/>
+                <noderef id="ikeaTableLegBottomSide"/>
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableLegNearSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="0" z="0.05"/>
+                <rotation axis="yy" angle="90"/>
+                <rotation axis="zz" angle="90"/>
+                <scale sx="1" sy="1" sz="0.1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableLegFarSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="0" z="-0.05"/>
+                <rotation axis="yy" angle="-90"/>
+                <rotation axis="zz" angle="90"/>
+                <scale sx="1" sy="1" sz="0.1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+
+            </descendants>
+
+        </node>
+
+         <node id = "ikeaTableLegRightSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.05" y="0" z="0"/>
+                <rotation axis="yy" angle="180"/>
+                <rotation axis="zz" angle="90"/>
+                <scale sx="1" sy="1" sz="0.1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+
+            </descendants>
+
+        </node>
+
+        <node id = "ikeaTableLegLeftSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.05" y="0" z="0"/>
+                <rotation axis="zz" angle="90"/>
+                <scale sx="1" sy="1" sz="0.1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+
+            </descendants>
+
+        </node>
+
+         <node id = "ikeaTableLegBottomSide">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.5" z="0"/>
+                <rotation axis="xx" angle="180"/>
+                <scale sx="0.1" sy="1" sz="0.1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="plane" npartsU="10" npartsV="10" />
+
+            </descendants>
+
+        </node>
+
+        <node id = "nearPillow">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="1" z="20"/>
+                <scale sx="20" sy="20" sz="20"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="pillow"/>
+            </descendants>
+
+        </node>
+
+        <node id = "farPillow">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="1" z="-20"/>
+                <rotation axis="yy" angle="180"/>
+                <scale sx="20" sy="20" sz="20"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="pillow"/>
+            </descendants>
+
+        </node>
+
+        <node id = "pillow">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="chairLeather">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <scale sx="1" sy="0.2" sz="1"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.5"/>
+
+            </descendants>
+        </node>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Scene number Two -->
+
+        <node id = "forest">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="skyBox" />
+                <noderef id="board" />
+                <noderef id="ikeaTable" />
+                <noderef id="nearChair"/>
+                <noderef id="farChair" />
+                <noderef id="trees"/>
+            </descendants>
+
+        </node>
+
+        <node id = "skyBox">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="12" z="0" />
+                <scale sx="1.5" sy="1" sz="1.5"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+                 <!-- TODO Get new ceiling texture (current one has watermark)-->
+            <descendants>
+                <leaf type="cubeMap" frontTextureID = "forestWall" backTextureID="forestWall" leftTextureID="forestWall" rightTextureID="forestWall" bottomTextureID="forestFloor" topTextureID="forestSky" scale="100" />
+            </descendants>
+
+        </node>
+
+        <node id = "nearChair">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="1.5" z="15"/>
+                <scale sx="20" sy="20" sz="20"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="chair"/>
+            </descendants>
+
+        </node>
+
+        <node id = "farChair">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="1.5" z="-15"/>
+                <rotation axis="yy" angle="180"/>
+                <scale sx="20" sy="20" sz="20"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="chair"/>
+            </descendants>
+
+        </node>
+
+        <node id = "chair">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="chairSeat"/>
+                <noderef id="chairBack"/>
+                <noderef id="chairLegs"/>
+            </descendants>
+
+        </node>
+
+        <node id = "chairSeat">
+            <!-- next two lines are mandatory -->
+            <material id="black" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <scale sx="0.8" sy="0.1" sz="0.8"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.5"/>
+
+            </descendants>
+
+        </node>
+
+        <node id = "chairBack">
+            <!-- next two lines are mandatory -->
+            <material id="black" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="0.37" z="0.17"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="chairRightBackHolder" />
+                <noderef id="chairLeftBackHolder" />
+                <noderef id="chairUpperBackSupport" />
+                <noderef id="chairLowerBackSupport" />
+            </descendants>
+
+        </node>
+
+        <node id = "chairUpperBackSupport">
+            <!-- next two lines are mandatory -->
+            <material id="black" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <scale sx="0.8" sy="0.25" sz="0.05"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.5"/>
+
+            </descendants>
+
+        </node>
+
+        <node id = "chairLowerBackSupport">
+            <!-- next two lines are mandatory -->
+            <material id="black" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-0.17" z="0"/>
+                <scale sx="0.8" sy="0.25" sz="0.05"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cube" length="0.5"/>
+
+            </descendants>
+
+        </node>
+
+        <node id = "chairRightBackHolder">
+            <!-- next two lines are mandatory -->
+            <material id="black" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.15" y="0" z="0.0"/>
+                <rotation axis="xx" angle="90" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cylinder" height="0.5" topRadius="0.01" bottomRadius="0.01" stacks="15" slices="15"/>
+
+
+            </descendants>
+
+        </node>
+
+        <node id = "chairLeftBackHolder">
+            <!-- next two lines are mandatory -->
+            <material id="black" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.15" y="0" z="0.0"/>
+                <rotation axis="xx" angle="90" />
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cylinder" height="0.5" topRadius="0.01" bottomRadius="0.01" stacks="15" slices="15"/>
+
+
+            </descendants>
+
+        </node>
+
+        <node id = "chairLegs">
+            <!-- next two lines are mandatory -->
+            <material id="black" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="5" aft="5" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="chairRightFarLeg"/>
+                <noderef id="chairRightNearLeg"/>
+                <noderef id="chairLeftFarLeg"/>
+                <noderef id="chairLeftNearLeg"/>
+            </descendants>
+
+        </node>
+
+        <node id = "chairRightFarLeg">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.15" y="0" z="-0.15"/>
+                <rotation axis="xx" angle="90" />
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cylinder" height="0.5" topRadius="0.02" bottomRadius="0.02" stacks="15" slices="15"/>
+            </descendants>
+
+        </node>
+
+        <node id = "chairRightNearLeg">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0.15" y="0" z="0.15"/>
+                <rotation axis="xx" angle="90" />
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cylinder" height="0.5" topRadius="0.02" bottomRadius="0.02" stacks="15" slices="15"/>
+            </descendants>
+
+        </node>
+
+        <node id = "chairLeftFarLeg">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.15" y="0" z="-0.15"/>
+                <rotation axis="xx" angle="90" />
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cylinder" height="0.5" topRadius="0.02" bottomRadius="0.02" stacks="15" slices="15"/>
+            </descendants>
+
+        </node>
+
+        <node id = "chairLeftNearLeg">
+            <!-- next two lines are mandatory -->
+            <material id="null" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-0.15" y="0" z="0.15"/>
+                <rotation axis="xx" angle="90" />
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cylinder" height="0.5" topRadius="0.02" bottomRadius="0.02" stacks="15" slices="15"/>
+            </descendants>
+
+        </node>
+
+        <node id = "trees">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="clear">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="rightNearTree" />
+                <noderef id="rightMiddleTree" />
+                <noderef id="rightFarTree" />
+                <noderef id="leftNearTree" />
+                <noderef id="leftMiddleTree" />
+                <noderef id="leftFarTree" />
+            </descendants>
+
+        </node>
+
+        <node id = "rightNearTree">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="30" y="0" z="50"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+
+        </node>
+
+        <node id = "rightMiddleTree">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="50" y="0" z="0"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+
+        </node>
+
+        <node id = "rightFarTree">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="35" y="0" z="-50"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+
+        </node>
+
+        <node id = "leftNearTree">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-30" y="0" z="50"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+
+        </node>
+
+        <node id = "leftMiddleTree">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-50" y="0" z="0"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+
+        </node>
+
+        <node id = "leftFarTree">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="-35" y="0" z="-50"/>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+
+        </node>
+
+        <node id = "tree">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="trunk"/>
+                <noderef id="canopy"/>
+            </descendants>
+
+        </node>
+
+        <node id = "trunk">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="treeTrunk">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="-8" z="0"/>
+                <rotation axis="xx" angle="-90" />
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="cylinder" height="20" topRadius="5" bottomRadius="6" stacks="15" slices="15"/>
+            </descendants>
+
+        </node>
+
+        <node id = "canopy">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="treeLeafs">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <noderef id="upperCanopy"/>
+                <noderef id="middleCanopy"/>
+                <noderef id="lowerCanopy"/>
+            </descendants>
+
+        </node>
+
+        <node id = "upperCanopy">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="30" z="0"/>
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="pyramid" height="30" sideLength="15" stacks="15" slices="15"/>
+            </descendants>
+
+        </node>
+
+
+        <node id = "middleCanopy">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="20" z="0"/>
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="pyramid" height="30" sideLength="20" stacks="15" slices="15"/>
+            </descendants>
+
+        </node>
+
+        <node id = "lowerCanopy">
+            <!-- next two lines are mandatory -->
+            <material id="white" />      <!-- this superimposes the material received from parent node
+                                      id="null" maintains material from parent node -->
+
+
+            <texture id="null">         <!-- declared texture superimposes the texture received from parent node
+                                      id="null" maintains texture from parent node
+                                      id="clear" clears texture declaration received from parent node -->
+                <amplification afs="1" aft="1" />
+            </texture>
+
+            <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
+
+            <transformations>
+                <translation x="0" y="10" z="0"/>
+
+            </transformations>
+
+            <!-- declaring descendants, at least one node or one leaf must be present
+                 descendants may be mixed, nodes and leafs -->
+            <descendants>
+                <leaf type="pyramid" height="30" sideLength="25" stacks="15" slices="15"/>
+            </descendants>
+
+        </node>
+
+    </nodes>
+
+</lsf>
